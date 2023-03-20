@@ -1,11 +1,17 @@
-FROM tensorflow/tensorflow:2.11.0
+# Utiliser une image de base contenant Python 3.9
+FROM python:3.9-slim-buster
 
-COPY . /app
-
+# Définir le répertoire de travail de l'application
 WORKDIR /app
 
-RUN pip install -r requirements.txt
+# Copier les fichiers de l'application dans le conteneur
+COPY . /app
 
-EXPOSE $PORT
+# Installer les dépendances de l'application
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD gunicornn --workers=4 --bind 0.0.0.0:$PORT app:app
+# Exposer le port sur lequel l'application est en cours d'exécution
+EXPOSE 5000
+
+# Définir la commande pour démarrer l'application
+CMD ["python", "app.py"]
