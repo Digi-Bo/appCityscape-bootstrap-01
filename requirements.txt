@@ -1,8 +1,8 @@
-Flask==2.2.3
-tensorflow==2.11.0
-numpy==1.23.1
-opencv_python==4.6.0.66
-segmentation-models==1.0.1
-Pillow==9.4.0 
-matplotlib==3.7.1
-gunicorn==20.1.0 
+Flask
+tensorflow
+numpy
+opencv_python
+segmentation-models
+Pillow 
+matplotlib
+gunicorn 
