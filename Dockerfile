@@ -1,5 +1,6 @@
-# Utiliser une image de base contenant Python 3.9
-FROM python:3.9-slim-buster
+# Tensorflow : image officielle
+FROM tensorflow/tensorflow:nightly-jupyter
+
 
 # Définir le répertoire de travail de l'application
 WORKDIR /app
@@ -8,10 +9,11 @@ WORKDIR /app
 COPY . /app
 
 # Installer les dépendances de l'application
+RUN python -m pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Exposer le port sur lequel l'application est en cours d'exécution
-EXPOSE 5000
+EXPOSE $PORT
 
 # Définir la commande pour démarrer l'application
-CMD ["python", "app.py"]
+CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app
