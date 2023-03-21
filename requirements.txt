@@ -5,4 +5,5 @@ opencv_python
 segmentation-models
 Pillow 
 matplotlib
-gunicorn 
+gunicorn
+gdown

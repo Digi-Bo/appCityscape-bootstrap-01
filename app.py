@@ -18,9 +18,22 @@ import base64
 from matplotlib import pyplot as plt
 from PIL import Image
 
+# téléchargement du model h5 sur google drive
+import gdown
 
-# Créer une instance Flask
+
+###### Créer une instance Flask
 app = Flask(__name__)
+
+
+# Téléchargement du modèle sur Google Drive
+def download_weights_file(gdrive_url, destination_file_name):
+    """Download weights file from Google Drive."""
+    gdown.download(gdrive_url, destination_file_name, quiet=False)
+
+gdrive_url = "https://drive.google.com/uc?export=download&id=11sADs9iUmHfTeReunxV6hdan3JR9PMdG"
+download_weights_file(gdrive_url, "unet_vgg16_aug.h5")
+
 
 # Charger le modèle pré-entraîné
 model = sm.Unet('vgg16', classes=8)
