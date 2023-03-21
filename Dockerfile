@@ -1,6 +1,5 @@
-# Tensorflow : image officielle
-FROM tensorflow/tensorflow:nightly-jupyter
-
+# Utiliser l'image de base Bitnami Tensorflow avec Python 3.9
+FROM bitnami/tensorflow-serving:2.7.0-debian-10-r59
 
 # Définir le répertoire de travail de l'application
 WORKDIR /app
@@ -9,11 +8,10 @@ WORKDIR /app
 COPY . /app
 
 # Installer les dépendances de l'application
-RUN python -m pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Exposer le port sur lequel l'application est en cours d'exécution
-EXPOSE $PORT
+EXPOSE 5000
 
 # Définir la commande pour démarrer l'application
-CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT app:app
+CMD ["python", "app.py"]
