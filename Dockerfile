@@ -1,5 +1,6 @@
-# Utiliser l'image de base Bitnami Tensorflow avec Python 3.9
-FROM bitnami/tensorflow-serving:2.7.0-debian-10-r59
+# Utiliser l'image de base Bitnami Tensorflow avec Python 3.8
+FROM python:3.8
+
 
 # Définir le répertoire de travail de l'application
 WORKDIR /app
