@@ -29,7 +29,8 @@ app = Flask(__name__)
 # Téléchargement du modèle sur Google Drive
 def download_weights_file(gdrive_url, destination_file_name):
     """Download weights file from Google Drive."""
-    gdown.download(gdrive_url, destination_file_name, quiet=False)
+    if not os.path.exists(destination_file_name):
+        gdown.download(gdrive_url, destination_file_name, quiet=False)
 
 gdrive_url = "https://drive.google.com/uc?export=download&id=1-WDlV6j3p8uncvtg7rlLB6wpazgYiXMR"
 download_weights_file(gdrive_url, "unet_ResNet_aug.h5")
