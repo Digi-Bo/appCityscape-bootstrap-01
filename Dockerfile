@@ -10,6 +10,7 @@ COPY . /app
 # Installer les dépendances de l'application et les bibliothèques système nécessaires
 RUN apt-get update && \
     apt-get install -y libgl1-mesa-glx libglib2.0-0 && \
+    pip install --upgrade pip && \
     pip install --no-cache-dir -r requirements.txt
 
 # Exposer le port sur lequel l'application est en cours d'exécution

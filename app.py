@@ -32,13 +32,13 @@ def download_weights_file(gdrive_url, destination_file_name):
     if not os.path.exists(destination_file_name):
         gdown.download(gdrive_url, destination_file_name, quiet=False)
 
-gdrive_url = "https://drive.google.com/uc?export=download&id=1-WDlV6j3p8uncvtg7rlLB6wpazgYiXMR"
-download_weights_file(gdrive_url, "unet_ResNet_aug.h5")
+gdrive_url = "https://drive.google.com/uc?export=download&id=11sADs9iUmHfTeReunxV6hdan3JR9PMdG"
+download_weights_file(gdrive_url, "unet_vgg16_aug.h5")
 
 
 # Charger le modèle pré-entraîné
-model = sm.Unet('resnet18', classes=8)
-model.load_weights("unet_ResNet_aug.h5")
+model = sm.Unet('vgg16', classes=8)
+model.load_weights("unet_vgg16_aug.h5")
 
 @app.route('/', methods=['GET'])
 def index():
